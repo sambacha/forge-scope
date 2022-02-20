@@ -1,0 +1,62 @@
+{
+    "$ref": "#/definitions/Schema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+      "Pipeline": {
+        "additionalProperties": false,
+        "properties": {
+          "imports": {
+            "default": true,
+            "description":  "import mappings",
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "dependsOn": {
+            "default": [],
+            "description":  "",
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "outputs": {
+            "default": ["dist/**", "build/**"],
+            "description":  "",
+            "items": { "type": "string" },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "Schema": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "default": "https://abi.storage/schema.json",
+            "type": "string"
+          },
+          "baseBranch": {
+            "default": "origin/master",
+            "description":  "",
+            "type": "string"
+          },
+          "globalDependencies": {
+            "default": [],
+            "description":  "",
+            "items": { "type": "string" },
+            "type": "array"
+          },
+          "pipeline": {
+            "additionalProperties": {
+              "$ref": "#/definitions/Pipeline",
+              "description":  ""
+            },
+            "default": {},
+            "description":  "",
+            "type": "object"
+          }
+        },
+        "required": ["pipeline"],
+        "type": "object"
+      }
+    }
+  }
+  

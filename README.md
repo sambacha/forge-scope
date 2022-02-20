@@ -1,17 +1,43 @@
 # forge-scope
 
+> ~/.foundryrc or $XDG_CONFIG_HOME/foundry/foundryrc or ~/.config/foundry/foundryrc
+
+
 ## Overview
 
+
+### Current
+
+```sh
+ds-test/=lib/ds-test/src/
+@openzeppelin/=node_modules/@openzeppelin/
+@rari-capital/=node_modules/@rari-capital/
+@manifoldxyz/=node_modules/@manifoldxyz/
+```
+
+### Proposed
+
+```json
+{
+	"imports": {
+		"@openzeppelin/contracts/": "/node_modules/@openzeppelin/contracts/",
+		"@uniswap/v2-core/": "/node_modules/@uniswap/v2-core/",
+		"@uniswap/v3-periphery/": "/node_modules/@uniswap/v3-periphery/"
+	},
+	"scopes": {}
+}
+```
+
+[TOC]
 - scoping
 - format
     - lockfile
     - deployments
 - ref. impl.
 
-
 ## Motivation
 
-
+t.b.d
 
 ## Scoping
 
