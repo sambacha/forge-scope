@@ -167,3 +167,10 @@ const matchFromUrl = match<MatchResult>(
   "/:url((?:[^?]+/)+[^?]+){\\?:commit([^?&=]+)}?(.+)?",
 );
 ```
+
+
+### Formats
+
+- IPFS = `ipfs://${CIDv1}`;
+- *.tgz = `https://codeload.github.com/${repo}/tar.gz/${commit}`;
+
