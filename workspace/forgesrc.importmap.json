@@ -1,0 +1,8 @@
+{
+	"imports": {
+		"@openzeppelin/contracts/": "/node_modules/@openzeppelin/contracts/",
+		"@uniswap/v2-core/": "/node_modules/@uniswap/v2-core/",
+		"@uniswap/v3-periphery/": "/node_modules/@uniswap/v3-periphery/"
+	},
+	"scopes": {}
+}
