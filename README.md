@@ -6,6 +6,10 @@
 ## Overview
 
 
+## Motivation
+
+t.b.d
+
 ### Current
 
 ```sh
@@ -17,27 +21,49 @@ ds-test/=lib/ds-test/src/
 
 ### Proposed
 
-```json
-{
-	"imports": {
-		"@openzeppelin/contracts/": "/node_modules/@openzeppelin/contracts/",
-		"@uniswap/v2-core/": "/node_modules/@uniswap/v2-core/",
-		"@uniswap/v3-periphery/": "/node_modules/@uniswap/v3-periphery/"
-	},
-	"scopes": {}
+
+
+#### Inline Imports for contract testing
+
+e.g.
+
+```solidity
+import '<%= ipfs_hash %>';
+import '<%= uri://hash@chainid %>';
+```
+
+```solidity
+import '<%= $scope1 %>Data';
+
+contract <%= $scope1 %>Factory {
+
+    function newInstance() public returns(address) {
+        return new <%= contractName %>Data();
+    }
 }
 ```
 
-[TOC]
-- scoping
-- format
-    - lockfile
-    - deployments
-- ref. impl.
+#### forgesrc.json
 
-## Motivation
+Forge Source replaces remappings.txt
 
-t.b.d
+```jsonc
+{
+	"imports": {
+		"@openzeppelin/contracts/": "/node_modules/@openzeppelin/contracts/", // validate against: ^[a-z][-a-z0-9]{0,255}$
+		 "@uniswap/v2-core/": "/node_modules/@uniswap/v2-core/",
+		 "@uniswap/v3-periphery/": "/node_modules/@uniswap/v3-periphery/"
+		 "@boringcrypto/boring-solidity": "git+https://github.com/boringcrypto/BoringSolidity#ccb743d4" 
+	},
+	"scopes": {
+	"@yearn/sdk/contracts/BaseStrategyV1.sol/": "@scope1"
+	},
+	"resolutions": {
+	
+	}
+}
+```
+
 
 ## Scoping
 
@@ -90,6 +116,10 @@ axisFormat  %Y-%m-%d
 
 
 Yarn workspaces can share modules across child projects/packages by hoisting them up to their parent project’s node_modules: `monorepo/node_modules`. This optimization becomes even more prominent when considering these packages will most likely be dependent on each other (the main reason to have the monorepo), i.e. higher degree of redundancy.
+
+
+### Monorepo packages 
+
 
 
 ## Import Maps
@@ -147,6 +177,14 @@ $ cat forge-importmap.json
 
 ```
 
+## Syntax
+
+```yml
+workspace:  ${{ env.working-directory }}
+```
+
+
+
 
 ## Fetching Imports via Git 
 
@@ -167,3 +205,10 @@ const matchFromUrl = match<MatchResult>(
   "/:url((?:[^?]+/)+[^?]+){\\?:commit([^?&=]+)}?(.+)?",
 );
 ```
+
+
+### Formats
+
+- IPFS = `ipfs://${CIDv1}`;
+- *.tgz = `https://codeload.github.com/${repo}/tar.gz/${commit}`;
+
