@@ -17,6 +17,7 @@ ds-test/=lib/ds-test/src/
 @openzeppelin/=node_modules/@openzeppelin/
 @rari-capital/=node_modules/@rari-capital/
 @manifoldxyz/=node_modules/@manifoldxyz/
+:https://github.com/sambacha/forge-scripts=$(pwd)/src/injected Inject.sol
 ```
 
 ### Proposed
