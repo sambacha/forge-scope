@@ -8,7 +8,7 @@
 
 ## Motivation
 
-t.b.d
+ESM style imports / `std.module.format` [see github.com/sambacha/typescript-cjs-esm-tests](https://github.com/sambacha/typescript-cjs-esm-tests)
 
 ### Current
 
